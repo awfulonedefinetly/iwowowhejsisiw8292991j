@@ -1,13 +1,11 @@
-# -- The bot was made by capitalist! --
+# -- The bot was made by the capitalist! --
 
 #pylint:disable=E0237
 from discord.ext import commands
 import discord
 import praw
 import datetime
-import requests
 import asyncio
-from bs4 import BeautifulSoup
 
 
 intents = discord.Intents().all()
