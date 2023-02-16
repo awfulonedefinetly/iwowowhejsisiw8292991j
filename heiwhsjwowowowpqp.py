@@ -20,7 +20,7 @@ class AHSError(Exception):
      """
      Raised when the subreddit name is not AgainstHateSubreddits 
      """
-     def __init__(self, error, message="The subreddit name must be AgainstHateSubreddits):
+     def __init__(self, error, message="The subreddit name must be AgainstHateSubreddits"):
         self.error = error 
         self.message = message 
         super().__init__(self.message)
