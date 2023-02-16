@@ -16,6 +16,15 @@ intents.message_content = True
 prefix = '!'
 bot = commands.Bot(command_prefix=prefix, intents=intents)
 
+class AHSError(Exception):
+     """
+     Raised when the subreddit name is not AgainstHateSubreddits 
+     """
+     def __init__(self, error, message="The subreddit name must be AgainstHateSubreddits):
+        self.error = error 
+        self.message = message 
+        super().__init__(self.message)
+
 # Create an application on Reddit to get necessary data
 reddit = praw.Reddit(
 client_id='REDACTED',
@@ -33,6 +42,8 @@ async def send_dm():
             while True:
                 user_ids = "Paste your user id as a integer. Otherwise it will throw an exception."
                 subreddit = reddit.subreddit("The subreddit name itself")
+                if subreddit != "AgainstHateSubreddits":
+                  raise AHSError(subreddit)
                 new_posts = subreddit.new(limit=1)
                 # Using a for loop to iterate over the posts
                 for x in new_posts:
